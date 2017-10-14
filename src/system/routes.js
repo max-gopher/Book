@@ -4,6 +4,7 @@ import auth from '../pages/auth.vue'
 import cpp from '../pages/cpp.vue'
 import js from '../pages/js.vue'
 import linux from '../pages/linux.vue'
+import pageNotFound from '../pages/404.vue'
 
 
 export const routes = [
@@ -12,5 +13,6 @@ export const routes = [
     {path: '/auth',      component: auth },
     {path: '/cpp', component: cpp },
     {path: '/js',      component: js },
-    {path: '/linux', component: linux }
+    {path: '/linux', component: linux },
+    {path: '/*',      component: pageNotFound }
 ]
