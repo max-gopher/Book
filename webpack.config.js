@@ -4,7 +4,6 @@ var CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client',
     path.join(__dirname, '/src/app.js')
   ],
   output: {
@@ -37,7 +36,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           limit: 10000,
-          name: '[name].[ext]?[hash]'
+          name: 'img/[name].[ext]?[hash]'
         }
       }
     ]
@@ -50,30 +49,39 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map',
-  plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
-      comments: false,
-      compress: {
-        sequences: true,
-        booleans: true,
-        loops: true,
-        unused: true,
-        warnings: false,
-        drop_console: true,
-        unsafe: true
-      }
-    }),
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.(js|css|html|svg|png)$/,
-      threshold: 10240,
-      minRatio: 0.8
-    })
-  ]
+  devtool: '#eval-source-map'
 }
+
+module.exports.devtool = '#source-map'
+module.exports.plugins = (module.exports.plugins || []).concat([
+  new webpack.optimize.OccurrenceOrderPlugin(),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: '"production"'
+    }
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    sourceMap: true,
+    beautify: false,
+    comments: false,
+    compress: {
+      sequences: true,
+      booleans: true,
+      loops: true,
+      unused: true,
+      warnings: false,
+      drop_console: true,
+      unsafe: true
+    }
+  }),
+  new CompressionPlugin({
+    asset: '[path].gz[query]',
+    algorithm: 'gzip',
+    test: /\.(js|css|html|svg|png)$/,
+    threshold: 10240,
+    minRatio: 0.8
+  }),
+  new webpack.LoaderOptionsPlugin({
+    minimize: true
+  })
+])
