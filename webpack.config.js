@@ -1,11 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
-var CompressionPlugin = require("compression-webpack-plugin")
+var CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
-    path.join(__dirname, './src/app.js')],
+    path.join(__dirname, '/src/app.js')
+  ],
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -55,8 +56,8 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      beautify:false,
-      comments:false,
+      beautify: false,
+      comments: false,
       compress: {
         sequences: true,
         booleans: true,
@@ -68,8 +69,8 @@ module.exports = {
       }
     }),
     new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
       test: /\.(js|css|html|svg|png)$/,
       threshold: 10240,
       minRatio: 0.8
