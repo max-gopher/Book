@@ -7,10 +7,10 @@ import linux from '../pages/linux.vue'
 
 
 export const routes = [
-    {path: '/',      component: index},
-    {path: '/vuejs', component: vuejs},
-    {path: '/auth',      component: auth},
-    {path: '/cpp', component: cpp},
-    {path: '/js',      component: js},
-    {path: '/linux', component: linux}
+    {path: '/',      component: index },
+    {path: '/vuejs', component: vuejs },
+    {path: '/auth',      component: auth },
+    {path: '/cpp', component: cpp },
+    {path: '/js',      component: js },
+    {path: '/linux', component: linux }
 ]

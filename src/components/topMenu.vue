@@ -1,5 +1,18 @@
 <template>
-    
+    <div class="topMenu">
+        <div class="logo">
+            <img src="../assets/img/logo.png" alt="Логотип">
+        </div>
+        <div class="menu">
+            <router-link tag="a" to="/vuejs">VueJS</router-link>
+            <router-link tag="a" to="/cpp">C++</router-link>
+            <router-link tag="a" to="/js">JS</router-link>
+            <router-link tag="a" to="/linux">Linux</router-link>
+        </div>
+        <div class="auth">
+            <router-link tag="a" to="/auth">Вход</router-link>
+        </div>
+    </div>
 </template>
 
 <script>
