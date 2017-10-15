@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
+import morgan from 'morgan'
 import Debug from 'debug'
 import devOptions from './controllers/config/devOptions'
 
@@ -11,6 +12,7 @@ const port = process.env.PORT || 5000
 const app = express()
 
 app.use(bodyParser.json())
+app.use(morgan('dev'))
 app.use('/dist', express.static('dist'))
 
 devOptions(app)

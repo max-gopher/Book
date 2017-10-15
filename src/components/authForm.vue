@@ -51,7 +51,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-//import valid from '../system/validators'
+import valid from '../system/validators'
 export default {
   data() {
     return {

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import VueNotifications from 'vue-notifications'
 
 const state = {
   user: null
@@ -18,7 +19,7 @@ const actions = {
           console.log(err)
         })
       } else {
-        console.log('ERR')
+        VueNotifications.error({ message: 'Не верные данные!' })
       }
     }
   }
